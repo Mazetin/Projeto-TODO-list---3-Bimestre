@@ -1,14 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import logo from './assets/todolist2.png';
+import { useState } from 'react';
+import btnAdd from "./assets/add.png"
 
 export default function App() {
+  const [tarefa, setTarefa] = useState("")
   return (
     <View style={styles.container}>
       <View>
         <Image source={logo} style={styles.logo} />
+      <Text>TODO list</Text>
       </View>
-      <Text>Caio Vínicius Mazeti de Camargo</Text>
+      <View>
+        <TextInput placeholder='Entre com a tarefa'
+        value={tarefa}
+        onChangeText={setTarefa}
+        />
+        <Image source={btnAdd}/>
+      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -24,5 +34,9 @@ const styles = StyleSheet.create({
   logo: {
     height: 128,
     width: 128
-  }
+  },
+  btnAdd: {
+    width:32,
+    height:32,
+  },
 });
